@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form -->
+    <record id="view_daily_sales_report_wizard_form" model="ir.ui.view">
+        <field name="name">daily.sales.report.wizard.form</field>
+        <field name="model">daily.sales.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Daily Sales Report">
+                <sheet>
+                    <group>
+                        <field name="analytic_account_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="line_ids">
+                            <tree editable="bottom">
+                                <field name="date"/>
+                                <field name="analytic_account_id"/>
+                                <field name="invoice_id"/>
+                                <field name="customer_id"/>
+                                <field name="total"/>
+                                <field name="paid"/>
+                                <field name="balance"/>
+                                <field name="payment_method"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="View Report" type="object" name="action_view_report" class="btn-primary"/>
+                        <button string="Export CSV" type="object" name="export_csv" class="btn-secondary"/>
+                        <button string="Close" class="btn-link" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_account_reports_root" name="Reports" parent="account.menu_finance"/>
+    <menuitem id="menu_daily_sales_report" name="Daily Sales Report" parent="menu_account_reports_root" action="action_daily_sales_report_wizard"/>
+
+    <record id="action_daily_sales_report_wizard" model="ir.actions.act_window">
+        <field name="name">Daily Sales Report</field>
+        <field name="res_model">daily.sales.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_daily_sales_report_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

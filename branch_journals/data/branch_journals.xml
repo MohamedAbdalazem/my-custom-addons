@@ -1,0 +1,90 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Analytic Accounts for Branches -->
+        <record id="analytic_arkweet" model="account.analytic.account">
+            <field name="name">فرع اركويت</field>
+        </record>
+        <record id="analytic_khartoum3" model="account.analytic.account">
+            <field name="name">فرع الخرطوم 3</field>
+        </record>
+        <record id="analytic_gadarif" model="account.analytic.account">
+            <field name="name">فرع القضارف</field>
+        </record>
+        <record id="analytic_portsudan" model="account.analytic.account">
+            <field name="name">فرع بورتسودان</field>
+        </record>
+        <record id="analytic_atbara" model="account.analytic.account">
+            <field name="name">فرع عطبرة</field>
+        </record>
+        <record id="analytic_branch2" model="account.analytic.account">
+            <field name="name">فرع 2</field>
+        </record>
+
+        <!-- Journals for each branch (Cash + Bank) -->
+        <record id="journal_cash_arkweet" model="account.journal">
+            <field name="name">Cash - فرع اركويت</field>
+            <field name="code">CARK</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_arkweet" model="account.journal">
+            <field name="name">Bank - فرع اركويت</field>
+            <field name="code">BARK</field>
+            <field name="type">bank</field>
+        </record>
+
+        <record id="journal_cash_khartoum3" model="account.journal">
+            <field name="name">Cash - فرع الخرطوم 3</field>
+            <field name="code">CKH3</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_khartoum3" model="account.journal">
+            <field name="name">Bank - فرع الخرطوم 3</field>
+            <field name="code">BKH3</field>
+            <field name="type">bank</field>
+        </record>
+
+        <record id="journal_cash_gadarif" model="account.journal">
+            <field name="name">Cash - فرع القضارف</field>
+            <field name="code">CGAD</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_gadarif" model="account.journal">
+            <field name="name">Bank - فرع القضارف</field>
+            <field name="code">BGAD</field>
+            <field name="type">bank</field>
+        </record>
+
+        <record id="journal_cash_portsudan" model="account.journal">
+            <field name="name">Cash - فرع بورتسودان</field>
+            <field name="code">CPOR</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_portsudan" model="account.journal">
+            <field name="name">Bank - فرع بورتسودان</field>
+            <field name="code">BPOR</field>
+            <field name="type">bank</field>
+        </record>
+
+        <record id="journal_cash_atbara" model="account.journal">
+            <field name="name">Cash - فرع عطبرة</field>
+            <field name="code">CATB</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_atbara" model="account.journal">
+            <field name="name">Bank - فرع عطبرة</field>
+            <field name="code">BATB</field>
+            <field name="type">bank</field>
+        </record>
+
+        <record id="journal_cash_branch2" model="account.journal">
+            <field name="name">Cash - فرع 2</field>
+            <field name="code">C002</field>
+            <field name="type">cash</field>
+        </record>
+        <record id="journal_bank_branch2" model="account.journal">
+            <field name="name">Bank - فرع 2</field>
+            <field name="code">B002</field>
+            <field name="type">bank</field>
+        </record>
+    </data>
+</odoo>

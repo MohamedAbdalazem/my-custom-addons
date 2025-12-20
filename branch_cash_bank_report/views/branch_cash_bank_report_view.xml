@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_branch_cash_bank_wizard_form" model="ir.ui.view">
+        <field name="name">branch.cash.bank.report.wizard.form</field>
+        <field name="model">branch.cash.bank.report</field>
+        <field name="arch" type="xml">
+            <form string="تقرير الكاش والبنك لكل فرع">
+                <group>
+                    <field name="branch_ids" widget="many2many_tags"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <button string="توليد التقرير" type="object" name="generate_report" class="btn-primary"/>
+                <separator/>
+                <field name="report_lines">
+                    <tree string="التقرير">
+                        <field name="branch_id"/>
+                        <field name="cash_total"/>
+                        <field name="bank_total"/>
+                        <field name="total"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_branch_cash_bank_report">
+        <field name="name">تقرير الكاش والبنك لكل فرع</field>
+        <field name="res_model">branch.cash.bank.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_branch_cash_bank_report"
+              name="تقرير الكاش والبنك"
+              parent="account.menu_finance_report"
+              action="action_branch_cash_bank_report"/>
+</odoo>

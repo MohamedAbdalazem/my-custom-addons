@@ -1,0 +1,41 @@
+<odoo>
+    <!-- Wizard form to generate & show lines -->
+    <record id="view_branch_cash_bank_wizard_form" model="ir.ui.view">
+        <field name="name">branch.cash.bank.report.form</field>
+        <field name="model">branch.cash.bank.report</field>
+        <field name="arch" type="xml">
+            <form string="تقرير الكاش والبنك لكل فرع / Branch Cash & Bank Report">
+                <sheet>
+                    <group>
+                        <field name="branch_ids" widget="many2many_tags" string="الفروع / Branches"/>
+                        <field name="date_to" string="حتى تاريخ / Date to"/>
+                    </group>
+                    <group>
+                        <button string="توليد التقرير / Generate Report" type="object" name="generate_report" class="btn-primary"/>
+                        <button string="طباعة PDF / Print PDF" type="action" name="%(action_report_branch_cash_bank)d" class="btn-secondary"/>
+                    </group>
+                    <separator/>
+                    <field name="report_line_ids">
+                        <tree string="تفاصيل التقرير / Report Lines">
+                            <field name="branch_id"/>
+                            <field name="cash_total"/>
+                            <field name="bank_total"/>
+                            <field name="total"/>
+                        </tree>
+                    </field>
+                </sheet>
+                <footer>
+                    <button string="إغلاق / Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open wizard -->
+    <record model="ir.actions.act_window" id="action_branch_cash_bank_report">
+        <field name="name">تقرير الكاش والبنك لكل فرع / Branch Cash & Bank Report</field>
+        <field name="res_model">branch.cash.bank.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

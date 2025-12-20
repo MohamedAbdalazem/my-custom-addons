@@ -1,0 +1,93 @@
+<odoo>
+    <!-- Report action -->
+    <report
+        id="action_report_branch_cash_bank"
+        string="تقرير كاش وبنك الفروع / Branch Cash & Bank Report"
+        model="branch.cash.bank.report"
+        report_type="qweb-pdf"
+        name="branch_cash_bank_report_full.branch_cash_bank_template"
+        file="branch_cash_bank_report_full.branch_cash_bank_template"
+        attachment_use="False"
+    />
+
+    <!-- QWeb template -->
+    <template id="branch_cash_bank_template">
+        <t t-call="web.external_layout">
+            <t t-set="doc" t-value="docs"/>
+            <div class="page">
+                <h2 t-if="doc.lang == 'ar'">تقرير الكاش والبنك لكل فرع</h2>
+                <h2 t-else="">Branch Cash & Bank Report</h2>
+
+                <table class="table table-sm" style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid #000; padding:4px;">#</th>
+                            <th style="border:1px solid #000; padding:4px;">
+                                <t t-if="doc.lang == 'ar'">الفرع</t>
+                                <t t-else="">Branch</t>
+                            </th>
+                            <th style="border:1px solid #000; padding:4px;">
+                                <t t-if="doc.lang == 'ar'">رصيد الكاش</t>
+                                <t t-else="">Cash Balance</t>
+                            </th>
+                            <th style="border:1px solid #000; padding:4px;">
+                                <t t-if="doc.lang == 'ar'">رصيد البنك</t>
+                                <t t-else="">Bank Balance</t>
+                            </th>
+                            <th style="border:1px solid #000; padding:4px;">
+                                <t t-if="doc.lang == 'ar'">إجمالي الفرع</t>
+                                <t t-else="">Branch Total</t>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="doc.report_line_ids" t-as="line">
+                            <tr>
+                                <td style="border:1px solid #000; padding:4px; text-align:center;">
+                                    <t t-esc="loop.index"/>
+                                </td>
+                                <td style="border:1px solid #000; padding:4px;">
+                                    <t t-esc="line.branch_id.name"/>
+                                </td>
+                                <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                    <t t-esc="formatLang(line.cash_total, currency_obj=doc.currency_id)"/>
+                                </td>
+                                <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                    <t t-esc="formatLang(line.bank_total, currency_obj=doc.currency_id)"/>
+                                </td>
+                                <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                    <t t-esc="formatLang(line.total, currency_obj=doc.currency_id)"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="border:1px solid #000; padding:4px; text-align:left;">
+                                <t t-if="doc.lang == 'ar'">الإجمالي الكلي للشركة</t>
+                                <t t-else="">Company Total</t>
+                            </td>
+                            <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                <t t-esc="formatLang(sum([l.cash_total for l in doc.report_line_ids]), currency_obj=doc.currency_id)"/>
+                            </td>
+                            <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                <t t-esc="formatLang(sum([l.bank_total for l in doc.report_line_ids]), currency_obj=doc.currency_id)"/>
+                            </td>
+                            <td style="border:1px solid #000; padding:4px; text-align:right;">
+                                <t t-esc="formatLang(sum([l.total for l in doc.report_line_ids]), currency_obj=doc.currency_id)"/>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <br/>
+                <div>
+                    <small>
+                        <t t-if="doc.lang == 'ar'">طُبع في: </t>
+                        <t t-else="">Printed on: </t>
+                        <t t-esc="formatLang(time.strftime('%Y-%m-%d %H:%M:%S'))"/>
+                    </small>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

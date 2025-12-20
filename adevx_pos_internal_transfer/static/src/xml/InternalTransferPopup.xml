@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="adevx_pos_internal_transfer.InternalTransferPopup">
+        <Dialog title="props.title">
+            <main class="modal-body">
+                <div class="client-details-right">
+                    <label class="info-title" for="picking_type_id">Picking Type</label>
+                    <div class="cash-input-sub-section input-group">
+                        <select class="form-control" name="picking_type_id" id="picking_type_id" t-on-change="OnChange">
+                            <option value="">Choose</option>
+                            <t t-foreach="pos.config.transfer_picking_type_ids" t-as="picking_type_id"
+                               t-key="picking_type_id.id">
+                                <option t-att-value="picking_type_id.id"
+                                        t-att-selected="picking_type_id['id'] ? ((changes.picking_type_id and picking_type_id.id === changes.picking_type_id) ? true : undefined) : undefined">
+                                    <t t-esc="picking_type_id.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <label class="info-title" for="location_dest_id">Source Location</label>
+                    <div class="cash-input-sub-section input-group">
+                        <select class="form-control" name="location_dest_id" id="location_dest_id"
+                                t-on-change="OnChange">
+                            <option value="">Choose</option>
+                            <t t-foreach="pos.config.transfer_location_dest_ids" t-as="location_dest_id"
+                               t-key="location_dest_id.id">
+                                <option t-att-value="location_dest_id.id"
+                                        t-att-selected="location_dest_id['id'] ? ((changes.location_dest_id and location_dest_id.id === changes.location_dest_id) ? true : undefined) : undefined">
+                                    <t t-esc="location_dest_id.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <label class="info-title" for="note">Notes</label>
+                    <div class="opening-cash-section mb-3">
+                        <div class="cash-input-sub-section input-group">
+                            <input class="pos-input form-control text-input"
+                                   name="note"
+                                   id="note"
+                                   type="text"
+                                   t-on-change="OnChange"
+                                   t-att-value="changes.note"/>
+                        </div>
+                    </div>
+                    <p style="text-align:center !important;" class="info-title">Automatic Actions</p>
+                    <div class="opening-cash-section mb-3">
+                        <div class="cash-input-sub-section input-group">
+                             <label class="info-title d-flex flex-grow-1 align-items-start"
+                                    for="internal_transfer_auto_confirm">Auto Confirm</label>
+                            <input type="checkbox"
+                                   name="internal_transfer_auto_confirm"
+                                   id="internal_transfer_auto_confirm"
+                                   t-on-change="OnChange"
+                                   t-att-checked="changes.internal_transfer_auto_confirm"
+                                   class="checkbox">
+                                <span class="checkbox-material"><span class="check"/></span>
+                            </input>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <t t-set-slot="footer">
+                <button class="button confirm highlight btn btn-lg btn-primary" t-on-click="OnConfirmTransfer"
+                        t-out="props.confirmText"/>
+                <button class="button cancel btn btn-lg btn-secondary" t-on-click="props.close"
+                        t-out="props.cancelText"/>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>
