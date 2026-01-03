@@ -24,7 +24,7 @@ odoo17 payment internal transfer
     'support': 'mohsen.waleed@gmail.com',
     'currency': 'USD',
     'price': 20.0,
-    'depends': ['account'],
+    'depends': ['account', 'base_accounting_kit'],
     'data': [
         'views/account_payment_views.xml',
     ],
