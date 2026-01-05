@@ -1,0 +1,14 @@
+<odoo>
+    <record id="action_manual_reconcile" model="ir.actions.act_window">
+        <field name="name">Manual Reconciliation</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('reconciled', '=', False)]</field>
+    </record>
+
+    <menuitem id="menu_account_reconcile"
+              name="Reconciliation"
+              parent="account.menu_finance_entries"
+              action="action_manual_reconcile"
+              sequence="90"/>
+</odoo>

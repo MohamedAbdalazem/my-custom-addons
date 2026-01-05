@@ -1,0 +1,50 @@
+{
+  "module_name": "Journal Account on POS Close",
+  "intro": "",
+  "description": "<p style=\"line-height: 100%; margin-bottom: 0cm;\">With this module, the income account used on the pos close become the pos journal account instead of the product account.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Thus, it makes it possible to use the default revenue account configured in the point of sale journal for matching when closing a point of sale session.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\"></p><p style=\"line-height: 100%; margin-bottom: 0cm;\">How does it work ?</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">You have to start by creating a specific article on which a category of articles links to an account.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Then you have to create a point of sale for which the sales journal is configured to break down the sale in question.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">The accounting document is thus on the account of the journal and not that of the category.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">If an account is set up on the article, then the newspaper account must also be taken over.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">When creating an invoice via the point of sale, we do not use the account of the journal, but that of the category or the article, unless nothing is entered in the category or the article, then it will be necessary to take again the account of the newspaper.</p>",
+  "french_description": "<p style=\"line-height: 100%; margin-bottom: 0cm;\">Avec ce module, le compte de revenu utilis&eacute; lors de la cl&ocirc;ture du point de vente devient le compte du journal du point de vente au lieu du compte du produit.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Ainsi, il permet d&rsquo;utiliser le compte de produits par faut configur&eacute; dans le journal du point de vente pour le lettrage lors de la cl&ocirc;ture d&rsquo;une session point de vente.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">&nbsp;</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Comment cela fonctionne&nbsp;?</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Il faut commencer par cr&eacute;er un article sp&eacute;cifique sur lequel une cat&eacute;gorie d&rsquo;articles renvoie vers un compte.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Ensuite il faut cr&eacute;er un point de vente pour lequel le journal de vente est param&eacute;tr&eacute; pour ventiler la vente en question.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">La pi&egrave;ce comptable est ainsi sur le compte du journal et pas celui de la cat&eacute;gorie.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Si un compte est param&eacute;tr&eacute; sur l&rsquo;article, alors il faut aussi reprendre le compte du journal.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">Lors de la cr&eacute;ation d&rsquo;une facture via le point de vente, on ne reprend pas le compte du journal, mais celui de la cat&eacute;gorie ou de l&rsquo;article, sauf si rien n&rsquo;est renseign&eacute; dans la cat&eacute;gorie ou l&rsquo;article, alors il faudra reprendre le compte du journal.</p><p style=\"line-height: 100%; margin-bottom: 0cm;\">&nbsp;</p>",
+  "search_keywords": "The income account used on the pos close become the pos journal account, Le compte de revenu utilisé lors de la clôture du point de vente devient le compte du journal du point de vente, account, POS, point de vente, compte, comptabilité, product, produit, journal, pièce comptable, accounting document",
+  "youtube_links": [],
+  "features": [
+    "Replaced product account with point of sale journal account",
+    "Use default product account when lettering",
+    "Addition of accounting document to the journal account",
+    "Consideration of the category or item account when creating an invoice"
+  ],
+  "reports": [],
+  "pictures": [
+    ["Creation of an article", "https://i.imgur.com/tzs9eFt.png"],
+    ["Creation of a parent category", "https://i.imgur.com/gZCukgf.png"],
+    ["POS creation", "https://i.imgur.com/VEJqICf.png"],
+    ["Sales journal setup", "https://i.imgur.com/3TkNL8d.png"],
+    ["Setup account", "https://i.imgur.com/Hm66JJo.png"],
+    ["Customer invoice", "https://i.imgur.com/3e4rhwL.png"] 
+  ],
+  "faq": [],
+  "other_modules": [
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/training_management/",
+      "icon": "https://i.imgur.com/5MmVNgZ.png"
+    },
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/training_management_sign/",
+      "icon": "https://i.imgur.com/dfIijft.png"
+    },
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/training_management_slides/",
+      "icon": "https://i.imgur.com/Zr4ZzDV.png"
+    },
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/quadra_export_ascii/",
+      "icon": "https://i.imgur.com/seoYv2j.png"
+    },
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/import_account_move_csv/",
+      "icon": "https://i.imgur.com/VuqueGn.png"
+    },
+    {
+      "url": "https://apps.odoo.com/apps/modules/15.0/mail_followers_note/",
+      "icon": "https://i.imgur.com/JMtgDLO.png"
+    }
+  ]
+}

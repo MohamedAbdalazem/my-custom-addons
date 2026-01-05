@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="adevx_pos_internal_transfer.CreateInternalTransferButton" t-inherit="point_of_sale.ControlButtons"
+       t-inherit-mode="extension">
+            <xpath expr="//t[@t-if='props.showRemainingButtons']/div/OrderlineNoteButton" position="after">
+                <button t-if="create_internal_transfer"
+                        t-att-class="buttonClass"
+                        t-on-click="() => this.OnClickTransfer()">
+                     <i class="fa fa-th-list me-2" role="img"
+                        aria-label="Create Internal Transfer"
+                        title="Create Internal Transfer"/>
+                   Create Internal Transfer
+                </button>
+            </xpath>
+    </t>
+</templates>
