@@ -4,7 +4,10 @@ from odoo.exceptions import UserError
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
+    # حقل التحويل الداخلي
     is_internal_transfer = fields.Boolean(string="تحويل داخلي")
+
+    # حساب الوجهة
     destination_journal_id = fields.Many2one(
         'account.journal',
         string="إلى الحساب",
@@ -13,17 +16,22 @@ class AccountPayment(models.Model):
 
     def action_post(self):
         for payment in self:
-            if payment.is_internal_transfer:
-                if not payment.destination_journal_id:
-                    raise UserError(_("الرجاء اختيار الحساب الوجهة."))
+            # تحقق أولاً إذا كان تحويل داخلي بدون اختيار الحساب الوجهة
+            if payment.is_internal_transfer and not payment.destination_journal_id:
+                raise UserError(_("الرجاء اختيار الحساب الوجهة."))
 
+            # إذا كان تحويل داخلي
+            if payment.is_internal_transfer:
+                # التحقق أن الحساب المصدر والوجهة مختلفان
                 if payment.journal_id == payment.destination_journal_id:
                     raise UserError(_("الحساب المصدر والوجهة يجب أن يكونا مختلفين."))
 
+                # التأكد من وجود حساب التحويل في إعدادات الشركة
                 transfer_account = payment.journal_id.company_id.transfer_account_id
                 if not transfer_account:
                     raise UserError(_("الرجاء تفعيل حساب Liquidity Transfer في إعدادات الشركة."))
 
+                # إنشاء القيد المحاسبي للتحويل الداخلي
                 move_vals = {
                     'date': payment.date,
                     'ref': _('تحويل داخلي %s → %s') % (
@@ -47,6 +55,9 @@ class AccountPayment(models.Model):
                 move = self.env['account.move'].create(move_vals)
                 move.action_post()
                 payment.state = 'posted'
+
+            # إذا لم يكن تحويل داخلي، استخدم الطريقة الافتراضية
             else:
                 super(AccountPayment, payment).action_post()
+
         return True
