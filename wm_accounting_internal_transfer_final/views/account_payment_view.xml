@@ -6,13 +6,13 @@
         <field name="inherit_id" ref="account.view_account_payment_form"/>
         <field name="arch" type="xml">
 
+            <!-- إضافة حقل تحويل داخلي بعد Journal -->
             <xpath expr="//field[@name='journal_id']" position="after">
+                <!-- حقل اختيار التحويل الداخلي -->
                 <field name="is_internal_transfer"/>
-                <field name="destination_journal_id"
-                    attrs="{
-                        'invisible': [('is_internal_transfer','=',False)],
-                        'required': [('is_internal_transfer','=',True)]
-                    }"/>
+
+                <!-- حقل الحساب الوجهة -->
+                <field name="destination_journal_id"/>
             </xpath>
 
         </field>
