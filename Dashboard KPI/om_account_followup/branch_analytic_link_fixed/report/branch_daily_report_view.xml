@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_branch_daily_report_wizard" model="ir.ui.view">
+        <field name="name">branch.daily.report.wizard.form</field>
+        <field name="model">branch.daily.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Daily Branch Report">
+                <group>
+                    <field name="report_date"/>
+                </group>
+                <footer>
+                    <button name="action_generate_report" type="object" string="PDF Report" class="btn-primary"/>
+                    <button name="action_export_excel" type="object" string="Export Excel" class="btn-secondary"/>
+                    <button special="cancel" string="Cancel" class="btn-link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_branch_daily_report_wizard" model="ir.actions.act_window">
+        <field name="name">Daily Branch Report</field>
+        <field name="res_model">branch.daily.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_branch_reports_root" name="Branch Reports" parent="account.menu_finance_reports"/>
+    <menuitem id="menu_branch_daily_report" name="Daily Branch Report"
+              parent="menu_branch_reports_root" action="action_branch_daily_report_wizard"/>
+</odoo>

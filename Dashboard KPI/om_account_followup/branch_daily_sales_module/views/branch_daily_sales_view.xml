@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_branch_daily_sales_wizard" model="ir.ui.view">
+        <field name="name">branch.daily.sales.wizard.form</field>
+        <field name="model">branch.daily.sales</field>
+        <field name="arch" type="xml">
+            <form string="تقرير مبيعات الفرع">
+                <group>
+                    <field name="branch_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="total_sales" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="تحديث" type="object" name="action_update_sales" class="btn-primary"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_branch_daily_sales">
+        <field name="name">تقرير المبيعات اليومي لكل فرع</field>
+        <field name="res_model">branch.daily.sales</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_branch_daily_sales"
+              name="تقرير مبيعات الفروع"
+              parent="sale.sale_menu_root"
+              action="action_branch_daily_sales"/>
+</odoo>

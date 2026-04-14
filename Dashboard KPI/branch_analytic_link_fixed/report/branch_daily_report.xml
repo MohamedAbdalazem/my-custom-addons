@@ -1,0 +1,10 @@
+<odoo>
+    <report
+        id="action_branch_daily_report_pdf"
+        string="Daily Branch Report"
+        model="branch.daily.report.wizard"
+        report_type="qweb-pdf"
+        name="branch_analytic_link.branch_daily_report_template"
+        file="branch_analytic_link.branch_daily_report_template"
+    />
+</odoo>

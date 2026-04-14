@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="menu_branch_cash_bank_report"
+              name="تقرير كاش وبنك الفروع / Branch Cash & Bank"
+              parent="account.menu_finance_report"
+              action="action_branch_cash_bank_report"/>
+</odoo>
