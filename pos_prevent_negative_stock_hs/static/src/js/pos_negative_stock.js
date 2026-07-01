@@ -60,7 +60,7 @@ if(is_pos_sale) {
             }
             if(is_negative) {
                 this.dialog.add(AlertDialog, {
-                    title: _t("No Stock Available"),
+                    title: _t("الكمية غير متوفرة من هذا المنتج ...!!!"),
                     body: _t(
                         `Product "${negative_product.display_name}" has insufficient stock.\n` +
                             `Available: ${negative_avail_qty}, Requested: ${negative_req_qty}`

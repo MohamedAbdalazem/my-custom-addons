@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/om_account_followup" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/wm_accounting_internal_transferlastt" vcs="Git" />
   </component>
 </project>
